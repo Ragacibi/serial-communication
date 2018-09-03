@@ -1,0 +1,83 @@
+= SerialComm.py
+:author: Ragacibi
+:data-uri:
+:icons: font
+:fonts:
+:link-css:font-awesome.min.css
+
+*Library version:*	1.0 +
+*Library scope:*	global +
+*Named arguments:*	supported +
+
+== Introduction
+
+Robot framework test library for establishing serial communication and interact with Shell
+
+This library utilizes Python's https://pyserial.readthedocs.io/en/latest/shortintro.html[serial] module.
+
+The library has following main usages:
+
+* [*] Establishing serial communication
+* [*] Executing commands in the device
+* [*] Login/Logout from the device
+
+[NOTE]
+This library is not included in Robot Framework.
+
+== Limitations
+
+* The arguments should be converted to bytes before passing
+
+=== Table of contents
+
+* <<initial-set-up,Initial Set-up>>
+* <<shortcuts,Shortcuts>>
+* <<keywords,Keywords>>
+
+[[initial-set-up]]
+== Initial Set-up
+
+* The device is connected with the host for serial comunication.
+* The parameters can be configured before communication establishment.
+
+|===
+| [big]*Library* | [big]*SerialComm.py* | port=/dev/ttyUSB0 | baudrate=115200 | timeout=1
+|===
+
+[[shortcuts]]
+== Shortcuts
+
+<<login, **L**ogin>> --
+<<login-status, **L**ogin Status>> --
+<<logout, **L**ogout>> --
+<<read-out, **R**ead Out>> --
+<<sendline, **S**endLine>>
+
+
+[[keywords]]
+== Keywords
+[options="header",cols="2,3,9a"]
+|===
+| Keyword
+| Arguments
+| Documentation
+
+|[[login]]
+*Login*
+| username, passwd
+| Login with the provided Username and Password
+
+|[[login-status]]
+*Login Status*
+|
+| Returns boolean based on the log-in status
+
+|[[logout]]
+*Logout*
+| out_cmd='exit'
+| Used to logout if already logged-in
+
+|[[sendline]]
+*SendLine*
+| cmd
+| Used to send a command to be executed on the device
