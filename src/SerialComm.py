@@ -27,7 +27,7 @@ class SerialComm(object):
     def login_status(self):
         """Used to verify login status
         """
-        self.console.write('\n')
+        self.console.write('\r\n')
         time.sleep(1)
         data = self.read_out()
         prompts = ('#', '$')
@@ -70,7 +70,8 @@ class SerialComm(object):
             time.sleep(1)
             data = self.read_out()
             return data
-        raise Exception(('Unable to Execute command {}').format(cmd))
+        else:
+            raise Exception(('Unable to Execute command {}').format(cmd))
 
     def logout(self, out_cmd='exit'):
         """Used to log out
